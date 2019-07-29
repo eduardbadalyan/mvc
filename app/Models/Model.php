@@ -1,5 +1,6 @@
 <?php
 
+
 class Model
 {
     public static function connnectDB ()

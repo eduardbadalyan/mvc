@@ -4,8 +4,12 @@ body {
 
     .header {
         padding: .5rem 15%;
-        height: 50px;
+        height: 55px;
     }
+
+        .btn-header {
+            margin: 0 10px;
+        }
 
     * {
         box-sizing: border-box;
