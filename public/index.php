@@ -11,14 +11,14 @@ require __DIR__ . "/../app/Models/Like.php";
 
 
 
-require "../app/Controllers/UserController.php";
-require "../app/Controllers/PostController.php";
-require "../app/Controllers/LikeController.php";
+require "../app/Controllers/UsersController.php";
+require "../app/Controllers/PostsController.php";
+require "../app/Controllers/LikesController.php";
 
 
 
 
-function view($path,$params)
+function view($path,$params = [])
 {
     extract($params);
 
@@ -32,85 +32,85 @@ session_start();
 if($_SESSION != null){
 
     if ($_SERVER["REQUEST_URI"] == "/exit") {
-        (new UserConntroller)->exit();
+        (new UsersController)->exit();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/avatar/change") {
-        (new UserConntroller)->getChangeAvatarPage($_SESSION["user_id"]);
+        (new UsersController)->getChangeAvatarPage($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/avatar/change/check") {
-        (new UserConntroller)->changeAvatar($_SESSION["user_id"]);
+        (new UsersController)->changeAvatar($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/password/change") {
-        (new UserConntroller)->getChangePasswordPage();
+        (new UsersController)->getChangePasswordPage();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/password/change/check") {
-        (new UserConntroller)->changePassword($_SESSION["user_id"]);
+        (new UsersController)->changePassword($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/parameters/change") {
-        (new UserConntroller)->getChangeParametersPage($_SESSION["user_id"]);
+        (new UsersController)->getChangeParametersPage($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/parameters/change/check") {
-        (new UserConntroller)->changeParameters($_SESSION["user_id"]);
+        (new UsersController)->changeParameters($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/add") {
-        (new PostConntroller)->getAddPostPage($_SESSION["user_id"]);
+        (new PostsController)->getAddPostPage($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/add/add"){   
-        (new PostConntroller)->addPost();
+        (new PostsController)->addPost();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/edit") {   
-        (new PostConntroller)->getEditPostPage($_SESSION["user_id"]);
+        (new PostsController)->getEditPostPage($_SESSION["user_id"]);
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/edit/edit") {   
-        (new PostConntroller)->editPost();
+        (new PostsController)->editPost();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/delete"){
-        (new PostConntroller)->deletePost();
+        (new PostsController)->deletePost();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/like"){
-        (new LikeConntroller)->like();
+        (new LikesController)->like();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/post/dislike"){
-        (new LikeConntroller)->dislike();
+        (new LikesController)->dislike();
     }
 
     else{
-        (new PostConntroller)->getMainPage($_SESSION["user_id"]);
+        (new PostsController)->getMainPage($_SESSION["user_id"]);
     }
 
 }
 else { 
     if ($_SERVER["REQUEST_URI"] == "/login") {
-        (new UserConntroller)->getLoginPage();
+        (new UsersController)->getLoginPage();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/login/auth") {
-        (new UserConntroller)->auth();
+        (new UsersController)->auth();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/register") {
-        (new UserConntroller)->getRegisterPage();
+        (new UsersController)->getRegisterPage();
     }
 
     else if ($_SERVER["REQUEST_URI"] == "/register/check") {
-        (new UserConntroller)->check();
+        (new UsersController)->check();
     }
 
     else{
-        (new PostConntroller)->getMainPage(NULL);
+        (new PostsController)->getMainPage(NULL);
     }
 }
 ?>

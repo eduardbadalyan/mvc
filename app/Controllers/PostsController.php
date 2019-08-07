@@ -3,7 +3,7 @@
 /**
  * TestsController
  */
-class PostConntroller
+class PostsController
 {
     public function getMainPage($user_id)
     {

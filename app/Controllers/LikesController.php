@@ -3,7 +3,7 @@
 /**
  * TestsController
  */
-class LikeConntroller
+class LikesController
 {
     public function like()
     {

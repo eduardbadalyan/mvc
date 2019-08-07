@@ -3,11 +3,11 @@
 /**
  * TestsController
  */
-class UserConntroller
+class UsersController
 {
     public function getLoginPage()
     {       
-        view('user/login',[]);
+        view('user/login');
     }
 
 
@@ -28,7 +28,7 @@ class UserConntroller
 
     public function getRegisterPage()
     {       
-        view('user/register',[]);
+        view('user/register');
     }
 
 
@@ -72,7 +72,7 @@ class UserConntroller
 
     public function getChangePasswordPage()
     {     
-        view('user/password',[]);
+        view('user/password');
     }
 
     public function changePassword($user_id)
